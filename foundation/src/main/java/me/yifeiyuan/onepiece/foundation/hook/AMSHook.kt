@@ -97,7 +97,7 @@ object AMSHook {
 
             //反射SingleTon
             val SingletonClass = Class.forName("android.util.Singleton")
-            val mInstance: Field = SingletonClass.getDeclaredField("mInstance")
+            val mInstance: Field = SingletonClass.getDeclaredField("mInstance") // null
             mInstance.setAccessible(true)
             val iActivityManagerObject: Any = mInstance.get(defaultValue)
             if (iActivityManagerObject != null) {
@@ -156,6 +156,6 @@ object AMSHook {
         /**
          * startActivity触发时回调
          */
-        fun onStartActivity(intent: Intent?)
+        fun onStartActivity(intent: Intent)
     }
 }
